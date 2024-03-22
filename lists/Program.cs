@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Reflection.Emit;
 using System.Security.Cryptography.X509Certificates;
+using System.Transactions;
 
 namespace lists
 {
@@ -12,6 +13,7 @@ namespace lists
             List<int> numbers = new List<int>();
             Random generator = new Random();
             string choice;
+            int addValue, valueOcc;
 
             Console.WriteLine("Here is a list of 25 random numbers from 10 - 20:");
             Console.WriteLine();
@@ -116,27 +118,120 @@ namespace lists
             }
             else if (option == 4)
             {
+                Console.Clear();
+                Console.WriteLine("Enter the value that you want to add to the list:");
+                Console.WriteLine();
+
+                addValue = Convert.ToInt32(Console.ReadLine());
+
+                numbers.Add(addValue);
+                Console.WriteLine();
+                Console.WriteLine("New list:") ;
+                Console.WriteLine();
+                Console.WriteLine();
+
+                for (int i = 0; i <= 26; i++)
+                {
+                    Console.Write(numbers[i] + " ") ;
+                }
+                
+                Console.WriteLine();
+                Console.WriteLine("If you wish to run the program again, enter Y, if not enter N:");
+
+                Console.WriteLine();
+                choice = Console.ReadLine().ToUpper();
+
+                if (choice == "Y")
+                {
+                    Console.Clear();
+                    menu();
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Press enter to close.");
+                }
 
             }
             else if (option == 5)
             {
+                Console.Clear() ;
+                int x = 0;
 
+                Console.WriteLine("Enter the value to count occurances:");
+                Console.WriteLine();
+
+                valueOcc = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine();
+
+                for (int i = 0; i <= 25; i++)
+                {
+
+                    if (numbers[i] == valueOcc)
+                    {
+                        x = x + 1;
+                    }
+                }
+
+                Console.WriteLine("The value " + valueOcc + " occured " + x + " time.") ;
             }
             else if (option == 6)
             {
+                Console.Clear();
+                numbers.Sort();
+                Console.WriteLine("The largest number in the list is:");
+                Console.WriteLine();
+                Console.WriteLine(numbers[25]) ;
+                Console.WriteLine() ;
+                Console.WriteLine("If you wish to run the program again, enter Y, if not enter N:");
 
+                Console.WriteLine();
+                choice = Console.ReadLine().ToUpper();
+
+                if (choice == "Y")
+                {
+                    Console.Clear();
+                    menu();
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Press enter to close.");
+                }
             }
             else if (option == 7)
             {
+                Console.Clear();
+                numbers.Sort();
+                Console.WriteLine("The smallest number in the list is:");
+                Console.WriteLine();
+                Console.WriteLine(numbers[1]);
+                Console.WriteLine();
+                Console.WriteLine("If you wish to run the program again, enter Y, if not enter N:");
 
+                Console.WriteLine();
+                choice = Console.ReadLine().ToUpper();
+
+                if (choice == "Y")
+                {
+                    Console.Clear();
+                    menu();
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Press enter to close.");
+                }
             }
             else if (option == 8)
             {
-
+                Console.Clear();
+                Console.WriteLine("Press 'enter' to quit the program.");
             }
             else
             {
-
+                Console.Clear();
+                menu();
             }
         }
 
